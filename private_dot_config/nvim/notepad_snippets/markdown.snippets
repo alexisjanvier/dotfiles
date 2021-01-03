@@ -1,0 +1,48 @@
+snippet cc "Caen.Camp.s"
+Caen.Camp.s
+endsnippet
+
+snippet ccc "Coding Caen.Camp.s"
+Coding Caen.Camp.s
+endsnippet
+
+snippet oelt "onestla.tech"
+onestla.tech
+endsnippet
+
+snippet img "Aligned image using HTML tag"
+<p align="center">
+<img src="${1:URL}" width="${2:800}">
+</p>
+$0
+endsnippet
+
+snippet link "Markdown links"
+[$1]($2)$0
+endsnippet
+
+snippet "fmblog" "Markdown front matter in YAML format" br
+---
+title: "$1"
+date: `!p from datetime import datetime
+if not snip.c:
+	snip.rv=datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S%z")`
+type: blog
+categories: [$2]
+tags:
+- $3
+---
+$0
+endsnippet
+
+snippet "fmcr" "Markdown front matter in YAML format" br
+---
+title: "$1"
+date: `!p from datetime import datetime
+if not snip.c:
+	snip.rv=datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S%z")`
+type: compte-rendu
+client: $3
+---
+$0
+endsnippet
