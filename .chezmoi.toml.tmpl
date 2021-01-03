@@ -1,0 +1,9 @@
+{{ $email := promptString "email for git and github" -}}
+{{ $name := promptString "name for git" -}}
+{{ $signingkey := promptString "Gpg key id for github" -}}
+{{ $user := promptString "github username" -}}
+data:
+    email: "{{ $email }}"
+    name = "{{ $name }}"
+    signingkey = "{{ $signingkey }}"
+    user = "{{ $user }}"
