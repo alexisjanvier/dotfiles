@@ -1,5 +1,13 @@
+######################
+# Common ENV variables
+######################
+export EDITOR='vim'
+export GIT_EDITOR='vim'
+export SHELL='/bin/zsh'
+export NODE_ENV='development'
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
+###########
 # oh-my-zsh
 ###########
 export ZSH=$HOME/.oh-my-zsh
@@ -20,24 +28,43 @@ plugins=(
 )
 source $ZSH/oh-my-zsh.sh
 
+############################
+# DIRENV https://direnv.net/
+############################
+eval "$(direnv hook zsh)"
+
+#########################################
 # KITTY https://sw.kovidgoyal.net/kitty/#
 #########################################
 autoload -Uz compinit
 compinit
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
-alias icat="kitty +kitten icat"
 
+######
+# TMUX
+######
+[ -z "$TMUX" ] && export TERM=xterm-256color
+export DISABLE_AUTO_TITLE='true'
+
+######
 # RUST
 ######
 export PATH="$HOME/.cargo/bin:$PATH"
 source "$HOME/.cargo/env"
 alias rustbook="rustup docs --book"
 
+#####
+# PHP
+#####
+export PATH="$HOME/.composer/vendor/bin:$HOME/.symfony/bin:$PATH"
+
+###############################
 # StarShip https://starship.rs/
 ###############################
 eval "$(starship init zsh)"
 
+####################################
 ## NVM https://github.com/nvm-sh/nvm
 ####################################
 export NVM_DIR="$HOME/.nvm"
@@ -65,6 +92,7 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
+######################################
 ## FZF https://github.com/junegunn/fzf
 ######################################
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -85,3 +113,15 @@ _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
+##############################################################################
+# Others public configuration, splitted in separated files to be more readable
+##############################################################################
+[ -f ~/.zsh/public/aliases ] && source ~/.zsh/public/aliases
+[ -f ~/.zsh/public/did ] && source ~/.zsh/public/did
+
+###############################################################
+# Private configuration (with token, environment variable, ...)
+###############################################################
+[ -f ~/.zsh/private/privateConfiguration ] && source ~/.zsh/private/privateConfiguration
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

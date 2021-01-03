@@ -1,0 +1,43 @@
+alias icat="kitty +kitten icat"
+alias vscode="/usr/bin/code"
+
+# NODE NPM
+alias npmgls="npm list -g --depth=0"
+alias npmgu="npm-check -gu"
+
+# folder size
+alias fs="du -hs"
+
+# List port in use
+alias openports="sudo lsof -i -P -n | grep LISTEN"
+
+# Morning quick daily working
+alias morning="git recent && git standup"
+
+# zshmarks (https://github.com/jocelynmallon/zshmarks)
+alias g="jump"
+alias s="bookmark"
+alias d="deletemark"
+alias p="showmarks"
+alias l="showmarks"
+
+# Alias xclip
+alias cpcb="xclip -sel c"
+
+# Alias Docker
+alias dockerClearContainers="docker rm $(docker ps -a -q)"
+
+# Alias for vim/neovim
+alias code="nvim"
+alias nb="nvim -u $HOME/.config/nvim/init-notepad.vim $HOME/Notebook/index.md"
+
+# TMUX
+alias tm="tmux new -s "
+alias tmks="tmux kill-session"
+
+# PHP
+alias composer="php /usr/local/bin/composer"
+
+# Portainer
+alias docker-manager="docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce"
+alias docker-manager-stop="docker stop portainer && docker rm portainer"

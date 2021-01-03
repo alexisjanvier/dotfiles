@@ -1,0 +1,79 @@
+# What did i do today?
+# from https://theptrk.com/2018/07/11/did-txt-file/
+export MDV_THEME=729.8953
+export DID_PATH=~/Notebook/20_daily
+
+function did(){
+    if [ -z "$1" ]
+    then
+        echo "Popop, il faut mettre UN tag et un titre"
+        return
+    fi
+    TAG=$1
+    shift
+    if [ -z "$@" ]
+    then
+        echo "Popop, il faut mettre un titre"
+        return
+    fi
+    NOTE_TITLE=$@
+    NOTE_SLUG=$(echo "$NOTE_TITLE" | sed -e 's/[^[:alnum:]]/-/g' | tr -s '-' | tr A-Z a-z | iconv -f utf8 -t ascii//TRANSLIT)
+    NOTE_NAME="$(date +"%Y-%m-%d_%H-%M")_$NOTE_SLUG.md"
+    shift $#
+    set --
+    mkdir -p ${DID_PATH}
+    if [ ! -f ${DID_PATH}/${NOTE_NAME} ]; then
+        echo "---\ntitle: $NOTE_TITLE\ndate: $(date -Iseconds)\ntype: note\ntags:\n- $TAG\n---" > ${DID_PATH}/${NOTE_NAME}
+    fi
+    nvim -u $HOME/.config/nvim/init-notepad.vim +'normal Go' ${DID_PATH}/${NOTE_NAME}
+}
+
+function didv(){
+    if [ $1 ]
+    then
+         vmd ${DID_PATH}/${1}.md
+    else
+        if [ ! -f ${DID_PATH}/$(date +%Y-%V).md ]; then
+            mkdir -p ${DID_PATH}
+            LC_ALL=C echo "# Week $(date +"%V (%B %Y)") \n\n## $(date +"%A %Y-%m-%d")" > ${DID_PATH}/$(date +%Y-%V).md
+        fi
+        vmd ${DID_PATH}/$(date +%Y-%V).md
+    fi
+}
+
+function week2Month(){
+    export LC_ALL=C
+    year=$(echo $1 | cut -f1 -d-)
+    week=$(echo $1 | cut -f2 -d-)
+    local dayofweek=1 # 1 for monday
+    date -d "$year-01-01 +$(( $week * 7 + 1 - $(date -d "$year-01-04" +%w ) - 3 )) days -2 days + $dayofweek days" +"%B %Y"
+    unset LC_ALL
+}
+
+function didl(){
+    for file in `ls ${DID_PATH}/*.md | sort -Vr`; do
+        filenameRaw="$(basename ${file})"
+        filename="${filenameRaw%.*}"
+        echo "${filename} ($(week2Month ${filename}))"
+    done
+}
+
+function dids(){
+    export LC_ALL=C
+    if [ $1 ]
+    then
+        for file in `ls ${DID_PATH}/*.md | sort -Vr`; do
+            NB_OCCURENCE="$(grep -c ${1} ${file})"
+            if [ ${NB_OCCURENCE} != "0" ]
+            then
+                filenameRaw="$(basename ${file})"
+                filename="${filenameRaw%.*}"
+                echo -e "\n\e[32m=> ${filename} ($(week2Month ${filename}), ${NB_OCCURENCE} results) \e[0m" && grep -n -B 1 ${1} ${file}
+            fi
+        done
+    else
+         echo "You must add a something to search..."
+    fi
+    unset LC_ALL
+}
+
