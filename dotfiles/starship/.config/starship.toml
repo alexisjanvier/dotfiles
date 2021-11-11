@@ -18,7 +18,7 @@ error_symbol = "[✗](bold red) "
 # when capacity is over 30%, the battery indicator will not be displayed
 
 [directory]
-truncation_length = 8
+truncation_length = 20
 truncation_symbol = "…/"
 
 [git_metrics]

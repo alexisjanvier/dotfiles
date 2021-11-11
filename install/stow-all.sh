@@ -5,6 +5,7 @@ rm rf ~/.local/share/fonts/DankMono ~/.config/lsd ~/.config/kitty ~/.config/star
 
 echo '[*] Stowing/Creating simlinks for fonts'
 cd ../dotfiles && stow -vSt ~ fonts && cd ../install
+fc-cache -f -v
 echo '[*] Stowing/Creating simlinks for kitty'
 cd ../dotfiles && stow -vSt ~ kitty && cd ../install
 echo '[*] Stowing/Creating simlinks for starship'
