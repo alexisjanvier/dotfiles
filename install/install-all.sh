@@ -1,11 +1,12 @@
 #!/bin/bash
-
-echo '[*] Install apt requierements ...'
-sudo apt -y install apt-transport-https curl gnupg stow
+#
+# Installation de tous les outils utilisés par mon terminal
+# Prérequis : les outils installés par le script install-first.sh
 
 echo '[*] Making all installation script executable ...'
 chmod +x *.sh
 
+./install-zsh-tools.sh
 ./install-kitty.sh
 ./install-rust.sh
 ./install-cli-tools.sh

@@ -1,0 +1,4 @@
+######
+# ZSH
+######
+alias reload="source ~/.zshrc"
