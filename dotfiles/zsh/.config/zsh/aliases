@@ -2,3 +2,59 @@
 # ZSH
 ######
 alias reload="source ~/.zshrc"
+
+######
+# RUST
+######
+alias rustbook="rustup docs --book"
+alias rustgu="cargo install-update -a"
+
+########
+# Kitty
+########
+# Fix ssh connexion 
+# https://sw.kovidgoyal.net/kitty/faq/#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer
+alias sshk="kitty +kitten ssh"
+alias icat="kitty +kitten icat"
+
+########
+# DIVERS
+########
+alias vscode="/usr/bin/code"
+alias code="nvim"
+alias ovim="$HOME/.local/appimages/Onivim2-x86_64-master.AppImage"
+# folder size
+alias fs="du -hs"
+# List port in use
+alias openports="sudo lsof -i -P -n | grep LISTEN"
+# Morning quick daily working
+alias morning="git recent && git standup"
+
+#####################################
+# LSD https://github.com/Peltoche/lsd
+#####################################
+alias ls='lsd'
+alias lsa='ls -la'
+alias lst='ls --tree'
+
+##########
+# NODE NPM
+##########
+alias npmgls="npm list -g --depth=0"
+alias npmgu="npm-check -gu"
+
+######################################################
+# zshmarks (https://github.com/jocelynmallon/zshmarks)
+######################################################
+alias g="jump"
+alias s="bookmark"
+alias d="deletemark"
+alias p="showmarks"
+alias l="showmarks"
+
+###########
+# Portainer
+###########
+alias docker-manager="docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce"
+alias docker-manager-stop="docker stop portainer && docker rm portainer"
+
