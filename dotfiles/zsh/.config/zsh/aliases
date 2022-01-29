@@ -3,15 +3,30 @@
 ######
 alias reload="source ~/.zshrc"
 
+#################################
+# Remplacement commandes usuelles
+#################################
+alias ls='lsd' # LSD https://github.com/Peltoche/lsd
+alias df='duf' # DUF https://github.com/muesli/duf
+alias du='dust' # DUST https://github.com/bootandy/dust
+alias find='fd' # FD https://github.com/sharkdp/fd
+alias top='btm' # Bottom https://github.com/ClementTsang/bottom
+
+#####
+# LSD
+#####
+alias lsa='ls -la'
+alias lst='ls --tree'
+
 ######
 # RUST
 ######
 alias rustbook="rustup docs --book"
 alias rustgu="cargo install-update -a"
 
-########
-# Kitty
-########
+#######
+# KITTY
+#######
 # Fix ssh connexion 
 # https://sw.kovidgoyal.net/kitty/faq/#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer
 alias sshk="kitty +kitten ssh"
@@ -29,13 +44,6 @@ alias fs="du -hs"
 alias openports="sudo lsof -i -P -n | grep LISTEN"
 # Morning quick daily working
 alias morning="git recent && git standup"
-
-#####################################
-# LSD https://github.com/Peltoche/lsd
-#####################################
-alias ls='lsd'
-alias lsa='ls -la'
-alias lst='ls --tree'
 
 ##########
 # NODE NPM
@@ -57,4 +65,4 @@ alias l="showmarks"
 ###########
 alias docker-manager="docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce"
 alias docker-manager-stop="docker stop portainer && docker rm portainer"
-
+alias docker-manager-update="docker pull portainer/portainer-ce"

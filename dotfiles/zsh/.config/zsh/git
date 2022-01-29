@@ -78,3 +78,7 @@ function ggpr() {
   fi
 }
 
+#  https://github.com/sharkdp/bat#git-diff
+function batdiff() {
+    git diff --name-only --diff-filter=d | xargs bat --diff
+}

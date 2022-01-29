@@ -51,6 +51,11 @@ export NVM_DIR="$HOME/.nvm"
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
+#######################################
+## RIPGREP https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#configuration-file
+#######################################
+export RIPGREP_CONFIG_PATH="$HOME/.config/.ripgreprc"
+
 ######
 # YARN
 ######
