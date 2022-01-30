@@ -23,6 +23,11 @@ alias lst='ls --tree'
 #####
 alias findif='~/.config/zsh/rfv.sh'
 
+#######
+# Tokei
+#######
+alias loc='tokei'
+
 ######
 # RUST
 ######

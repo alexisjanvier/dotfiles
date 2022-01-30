@@ -22,3 +22,12 @@ cargo install --locked bat
 # bat - https://github.com/BurntSushi/ripgrep
 echo '[*] Install ripgrep'
 cargo install ripgrep
+# tealdeer - https://github.com/dbrgn/tealdeer
+echo '[*] Install tealdeer'
+cargo install tealdeer
+# procs - https://github.com/dalance/procs
+echo '[*] Install procs'
+cargo install procs
+# tokei - https://github.com/XAMPPRocky/tokei
+echo '[*] Install tokei'
+cargo install tokei
