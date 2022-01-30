@@ -18,6 +18,11 @@ alias top='btm' # Bottom https://github.com/ClementTsang/bottom
 alias lsa='ls -la'
 alias lst='ls --tree'
 
+#####
+# ZFZ
+#####
+alias findif='~/.config/zsh/rfv.sh'
+
 ######
 # RUST
 ######
