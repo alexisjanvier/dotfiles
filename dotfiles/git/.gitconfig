@@ -1,0 +1,90 @@
+[include]
+  # For username / creds / etc
+  path = ~/.gitconfig.local
+  path = ~/.config/git/git_delta
+[core]
+  excludesfile = ~/.gitignore_global
+  editor = vim +16 +startinsert
+  precomposeunicode = true
+[color]
+	ui = true
+[color "branch"]
+  current = yellow reverse
+  local   = yellow
+  remote  = green
+[color "diff"]
+	meta       = yellow bold
+	frag       = magenta bold
+	old        = red bold
+	new        = green bold
+	whitespace = red reverse
+[color "status"]
+	added     = yellow
+	changed   = green
+	untracked = cyan
+[diff]
+  mnemonicPrefix = true
+  renames = true
+  wordRegex = .
+  colorMoved = default
+[fetch]
+  recurseSubmodules = on-demand
+[grep]
+  extendedRegexp = true
+[log]
+  abbrevCommit = true
+[merge]
+  conflictStyle = diff3
+[mergetool]
+  keepBackup = false
+  keepTemporaries = false
+  prompt = false
+[pull]
+  rebase = true
+[push]
+  default = upstream
+[status]
+  submoduleSummary = true
+  showUntrackedFiles = all
+[tag]
+	sort = version:refname
+[branch]
+  autosetuprebase = always
+[init]
+	defaultBranch = main
+[alias]
+  # Shortcuts
+  aa = add .
+  ci = commit
+  co = checkout
+  st = status
+  br = branch # List local branch
+
+  # Daily
+  lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --graph
+  fixup = "!git add -p && git commit --amend --no-edit"
+  please = push --force-with-lease
+  prb = pull --rebase=merges
+  
+
+  # Repo views
+  repo-branches-and-tags = log --all --graph --decorate --oneline --simplify-by-decoration
+  repo-current-status = log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
+  repo-top10 = "!f() { git shortlog --numbered --summary HEAD | head -10; }; f"
+  repo-who-worked-on = shortlog -sn
+  repo-this-week = "!f() { git shortlog --after=\"1 week ago\" --before=\"today\" --pretty=format:\"%ar%n %h - %s %n\"; }; f"
+  repo-yesterday = "!f() { git diff --shortstat --since=\"1 day ago\"; }; f"
+  repo-yesterday-commit = "!f() { git shortlog --since=\"1 day ago\" --pretty=format:\"%ar%n %h - %s %n\"; }; f"; f"
+
+  # Maintenance
+  delete-merged-branches-on-master = "!git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+  delete-merged-branches-on-develop = "!git co develop && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+  delete-merged-branches-on-main = "!git co main && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+  cleanup = "!git remote update --prune origin && git repack && git gc"
+  conflicts = "!f() { git ls-files -u | cut -f 2 | sort -u; }; f"
+  keep-mine = checkout --ours --
+  keep-theirs = checkout --theirs --
+
+  # Other
+  it = "!git init && git commit -m “chore: the very first commit” --allow-empty"
+  show-aliases = "!git config --get-regexp alias|sed \"s/alias.\\([a-zA-Z-]*\\) \\(\\.\\)*/$(tput setaf 2)\\1 $(tput setaf 8)\\2/\""

@@ -1,82 +1,4 @@
-function gcb() {
-  selectedb=$(
-    git branch |
-    sed -e 's/"\(.*\)"/\1/' -e 's/\\t/\t/' |
-    fzf \
-      --with-nth=1 \
-      --delimiter='\t' |
-    sed 's/^#\([0-9]\+\).*/\1/' |
-    sed 's/ *$//g' |
-    sed -e 's/^[[:space:]]*//'
-  )
 
-  if [ -n "$selectedb" ]; then 
-    git checkout $selectedb
-  fi
-}
-
-function gdb() {
-  selectedb=$(
-    git branch |
-    sed -e 's/"\(.*\)"/\1/' -e 's/\\t/\t/' |
-    fzf \
-      --with-nth=1 \
-      --delimiter='\t' |
-    sed 's/^#\([0-9]\+\).*/\1/' |
-    sed 's/ *$//g' |
-    sed -e 's/^[[:space:]]*//'
-  )
-
-  if [ -n "$selectedb" ]; then 
-    git branch --delete --force $selectedb
-  fi
-}
-
-function gpr() {
-  selectedb=$(
-    git branch |
-    sed -e 's/"\(.*\)"/\1/' -e 's/\\t/\t/' |
-    fzf \
-      --with-nth=1 \
-      --delimiter='\t' |
-    sed 's/^#\([0-9]\+\).*/\1/' |
-    sed 's/ *$//g' |
-    sed -e 's/^[[:space:]]*//'
-  )
-
-  if [ -n "$selectedb" ]; then 
-    git checkout $selectedb
-  fi
-}
-
-function ggpr() {
-  local jq_template pr_number
-
-  jq_template='"'\
-'#\(.number) - \(.title)'\
-'\t'\
-'Author: \(.user.login)\n'\
-'Created: \(.created_at)\n'\
-'Updated: \(.updated_at)\n\n'\
-'\(.body)'\
-'"'
-
-  pr_number=$(
-    gh api 'repos/:owner/:repo/pulls' |
-    jq ".[] | $jq_template" |
-    sed -e 's/"\(.*\)"/\1/' -e 's/\\t/\t/' |
-    fzf \
-      --with-nth=1 \
-      --delimiter='\t' \
-      --preview='echo -e {2}' \
-      --preview-window=top:wrap |
-    sed 's/^#\([0-9]\+\).*/\1/'
-  )
-
-  if [ -n "$pr_number" ]; then
-    gh pr checkout "$pr_number"
-  fi
-}
 
 #  https://github.com/sharkdp/bat#git-diff
 function batdiff() {
@@ -140,4 +62,63 @@ _gs() {
   is_in_git_repo || return
   git stash list | fzf-down --reverse -d: --preview 'git show --color=always {1}' |
   cut -d: -f1
+}
+
+_gcb() {
+  selectedb=$(
+    is_in_git_repo || return
+    git branch -a --color=always | grep -v '/HEAD\s' | sort |
+    fzf-down --ansi --multi --tac --preview-window right:70% \
+      --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1)' |
+    sed 's/^..//' | cut -d' ' -f1 |
+    sed 's#^remotes/##'
+  )
+
+  if [ -n "$selectedb" ]; then 
+    git checkout $selectedb
+  fi
+}
+
+_gdb() {
+  selectedb=$(
+    is_in_git_repo || return
+    git branch -a --color=always | grep -v '/HEAD\s' | sort |
+    fzf-down --ansi --multi --tac --preview-window right:70% \
+      --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1)' |
+    sed 's/^..//' | cut -d' ' -f1 |
+    sed 's#^remotes/##'
+  )
+
+  if [ -n "$selectedb" ]; then 
+    git branch --delete --force $selectedb
+  fi
+}
+
+function _ggpr() {
+  local jq_template pr_number
+
+  jq_template='"'\
+'#\(.number) - \(.title)'\
+'\t'\
+'Author: \(.user.login)\n'\
+'Created: \(.created_at)\n'\
+'Updated: \(.updated_at)\n\n'\
+'\(.body)'\
+'"'
+
+  pr_number=$(
+    gh api 'repos/:owner/:repo/pulls' |
+    jq ".[] | $jq_template" |
+    sed -e 's/"\(.*\)"/\1/' -e 's/\\t/\t/' |
+    fzf \
+      --with-nth=1 \
+      --delimiter='\t' \
+      --preview='echo -e {2}' \
+      --preview-window=top:wrap |
+    sed 's/^#\([0-9]\+\).*/\1/'
+  )
+
+  if [ -n "$pr_number" ]; then
+    gh pr checkout "$pr_number"
+  fi
 }

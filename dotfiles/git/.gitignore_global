@@ -1,0 +1,15 @@
+node_modules
+npm-error.log
+yarn-error.log
+*.swp
+.cache
+.did
+.DS_Store
+.envrc
+.gitconfig.local
+.nvmrc
+.Rhistory
+.Trash-0
+.vscode
+tags.lock
+tags.temp

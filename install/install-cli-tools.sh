@@ -31,3 +31,6 @@ cargo install procs
 # tokei - https://github.com/XAMPPRocky/tokei
 echo '[*] Install tokei'
 cargo install tokei
+# delta - https://github.com/dandavison/delta
+echo '[*] Install Delta for Git'
+cargo install cargo install git-delta

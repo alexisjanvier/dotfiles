@@ -17,14 +17,14 @@ On va y trouver bien évidemment des fichiers de configurations, mais aussi des 
 
 ## A faire
 
-Ce readme est le premier commit de ce dépôt. Tout reste donc à faire !
+Ce readme est le premier commit du dépôt. Tout reste donc à faire !
 
-- [ ] How-to sur stow
-- [ ] Configuration et installation du terminal (kitty, fonts, zsh, oh-my-zsh, prompt, ...)
-- [ ] Configuration de git
+- [x] How-to sur stow
+- [x] Configuration et installation du terminal (kitty, fonts, zsh, oh-my-zsh, prompt, ...)
+- [x] Configuration de git
 - [ ] Configuration et installation de vim/neovim
-- [ ] Configuration et installation du remplacement des commandes de base (ls, cat, ...)
-- [ ] Configuration et installation d'utilitaires que j'utilise au quotidien (dust, duff, fzh, gh-cli, ...)
+- [x] Configuration et installation du remplacement des commandes de base (ls, cat, ...)
+- [x] Configuration et installation d'utilitaires que j'utilise au quotidien (dust, duff, fzh, gh-cli, ...)
 
 # My Dotfiles
 
@@ -47,9 +47,9 @@ We will find configuration files, but also installation scripts allowing to auto
 
 This readme is the first commit of this repository. Everything remains to be done!
 
-- [ ] How-to on stow
-- [ ] Terminal configuration and installation (kitty, fonts, zsh, oh-my-zsh, prompt, ...)
-- [ ] Git configuration
+- [x] How-to on stow
+- [x] Terminal configuration and installation (kitty, fonts, zsh, oh-my-zsh, prompt, ...)
+- [x] Git configuration
 - [ ] Configuration and installation of vim/neovim
-- [ ] Configuration and installation of basic command replacement (ls, cat, ...)
-- [ ] Configuration and installation of utilities I use on a daily basis (dust, duff, fzh, gh-cli, ...)
+- [x] Configuration and installation of basic command replacement (ls, cat, ...)
+- [x] Configuration and installation of utilities I use on a daily basis (dust, duff, fzh, gh-cli, ...)
