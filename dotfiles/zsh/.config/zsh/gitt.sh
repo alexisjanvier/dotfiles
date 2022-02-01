@@ -57,7 +57,7 @@ then
    _gs
 else
    echo -e "\n-------------------------------"
-   echo "- ${bold}ggit : commandes git custo.${normal} -"
+   echo "- ${bold}gitt : commandes git custo.${normal} -"
    echo -e "-------------------------------\n"
    echo " * ${bold}br${normal} : selectionner une branche avec fzf"
    echo " * ${bold}daily${normal} : des informations pour le daily"

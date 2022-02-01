@@ -117,7 +117,7 @@ fi
 ########
 if [ -f "$ZPUBLICDOTDIR/git" ] ; then
   # source "$ZPUBLICDOTDIR/git"
-  alias ggit='~/.config/zsh/ggit.sh'
+  alias gitt='~/.config/zsh/gitt.sh'
 fi
 
 ########
