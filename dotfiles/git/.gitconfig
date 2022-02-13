@@ -58,15 +58,14 @@
   ci = commit
   co = checkout
   st = status
-  br = branch # List local branch
+  br = branch
+  lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --graph
+  prb = pull --rebase=merges
 
   # Daily
-  lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --graph
   fixup = "!git add -p && git commit --amend --no-edit"
   please = push --force-with-lease
-  prb = pull --rebase=merges
   
-
   # Repo views
   repo-branches-and-tags = log --all --graph --decorate --oneline --simplify-by-decoration
   repo-current-status = log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
