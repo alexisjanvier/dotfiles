@@ -2,6 +2,8 @@
 
 Ce sont des fichiers ou des dossiers classiquement cachés par le navigateur du fichier. Leur nom est précédé d’un point — d’où leur nom générique de dotfile — et l’utilisateur doit demander explicitement leur affichage. Ils vont le plus souvent être utilisés pour de la configuration du système ou de logiciel. C’est pour cela que beaucoup de personnes, dont moi du coup, portent une attention particulière à la gestion et/ou la centralisation de ces fichiers : cela permet aussi bien le partage de la configuration d’un logiciel particulier que la migration facilitée de son environnement de travail d’un poste à l’autre.
 
+Vous trouverez plus d'explications sur mon post de blog ["Un atelier ouvert et transposable grâce aux dotfiles"](https://alexisjanvier.net/blog/un-atelier-ouvert-et-transposable-grace-aux-dotfiles/)
+
 ## Les gestionnaires de dotfiles
 
 Le premier réflexe lorsque l'on veut partager ou sauvegarder ses dotfiles est de créer [une automatisation du processus](https://www.freecodecamp.org/news/build-your-own-dotfiles-manager-from-scratch/). Et bien évidemment, il existe des programmes pour le faire. Il existe par exemple [chezmoi.io](https://www.chezmoi.io/), qui fait beaucoup de chose (gestion de multiples environnements, gestion des secrets ...). Trop peut-être, car sa bonne utilisation requiert un apprentissage non négligeable. Mais il existe aussi en vrac : [yadm](https://yadm.io/), [dotbot](https://github.com/anishathalye/dotbot) ou encore [dot](https://github.com/sds/dot).
@@ -14,17 +16,6 @@ On va y trouver bien évidemment des fichiers de configurations, mais aussi des 
 
 * `dotfiles` : les fichiers de configuration prêts à être mis en place par `stow`,
 * `install` : les scripts d'automatisation d'installation et de configuration de mon environnement sur une **machine sous Linux**.
-
-## A faire
-
-Ce readme est le premier commit du dépôt. Tout reste donc à faire !
-
-- [x] How-to sur stow
-- [x] Configuration et installation du terminal (kitty, fonts, zsh, oh-my-zsh, prompt, ...)
-- [x] Configuration de git
-- [ ] Configuration et installation de vim/neovim
-- [x] Configuration et installation du remplacement des commandes de base (ls, cat, ...)
-- [x] Configuration et installation d'utilitaires que j'utilise au quotidien (dust, duff, fzh, gh-cli, ...)
 
 # My Dotfiles
 
@@ -42,14 +33,3 @@ We will find configuration files, but also installation scripts allowing to auto
 
 * `dotfiles`: the configuration files ready to be *symlinked* by `stow`,
 * `install`: the scripts for automating the installation and configuration of my environment on a **Linux OS**.
-
-## To do
-
-This readme is the first commit of this repository. Everything remains to be done!
-
-- [x] How-to on stow
-- [x] Terminal configuration and installation (kitty, fonts, zsh, oh-my-zsh, prompt, ...)
-- [x] Git configuration
-- [ ] Configuration and installation of vim/neovim
-- [x] Configuration and installation of basic command replacement (ls, cat, ...)
-- [x] Configuration and installation of utilities I use on a daily basis (dust, duff, fzh, gh-cli, ...)
