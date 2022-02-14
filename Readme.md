@@ -2,7 +2,7 @@
 
 Ce sont des fichiers ou des dossiers classiquement cachés par le navigateur du fichier. Leur nom est précédé d’un point — d’où leur nom générique de dotfile — et l’utilisateur doit demander explicitement leur affichage. Ils vont le plus souvent être utilisés pour de la configuration du système ou de logiciel. C’est pour cela que beaucoup de personnes, dont moi du coup, portent une attention particulière à la gestion et/ou la centralisation de ces fichiers : cela permet aussi bien le partage de la configuration d’un logiciel particulier que la migration facilitée de son environnement de travail d’un poste à l’autre.
 
-Vous trouverez plus d'explications sur mon post de blog ["Un atelier ouvert et transposable grâce aux dotfiles"](https://alexisjanvier.net/blog/un-atelier-ouvert-et-transposable-grace-aux-dotfiles/)
+Vous trouverez plus d'explications sur mon post de blog ["Un atelier ouvert et transposable grâce aux dotfiles"](https://alexisjanvier.net/blog/un-terminal-transposable-grace-aux-dotfiles/)
 
 ## Les gestionnaires de dotfiles
 
