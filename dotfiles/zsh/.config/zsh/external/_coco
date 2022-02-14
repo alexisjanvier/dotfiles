@@ -1,0 +1,39 @@
+#compdef coco
+
+autoload -U is-at-least
+
+_coco() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" \
+'()--completion=[Generate shell completions]:COMPLETION: ' \
+'-h[Print help information]' \
+'--help[Print help information]' \
+'-V[Print version information]' \
+'--version[Print version information]' \
+'-B[Create a BREAKING CHANGE commit]' \
+'--breaking-change[Create a BREAKING CHANGE commit]' \
+'-e[Open commit message in an editor]' \
+'--edit[Open commit message in an editor]' \
+':type -- Conventional commit type:(perf ci style chore revert feat fix docs refactor test build)' \
+':message -- Commit description:' \
+'::scope -- Conventional commit scope:' \
+&& ret=0
+}
+
+(( $+functions[_coco_commands] )) ||
+_coco_commands() {
+    local commands; commands=()
+    _describe -t commands 'coco commands' commands "$@"
+}
+
+_coco "$@"

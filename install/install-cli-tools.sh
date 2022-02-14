@@ -33,4 +33,7 @@ echo '[*] Install tokei'
 cargo install tokei
 # delta - https://github.com/dandavison/delta
 echo '[*] Install Delta for Git'
-cargo install cargo install git-delta
+cargo install git-delta
+# cocogitto - https://github.com/cocogitto/cocogitto
+echo '[*] Install cocogitto, the Conventional Commits toolbox'
+cargo install cocogitto
