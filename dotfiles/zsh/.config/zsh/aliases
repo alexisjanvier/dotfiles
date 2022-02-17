@@ -2,6 +2,7 @@
 # ZSH
 ######
 alias reload="source ~/.zshrc"
+alias -s json="jless"
 
 #################################
 # Remplacement commandes usuelles
@@ -21,7 +22,9 @@ alias lst='ls --tree'
 #####
 # ZFZ
 #####
-alias findif='~/.config/zsh/rfv.sh'
+# Search in files from the current dirictory with ripgrep and fzf
+alias findinfile='~/.config/zsh/rfv.sh'
+alias findpreview="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 #######
 # Tokei
@@ -54,6 +57,8 @@ alias ovim="$HOME/.local/appimages/Onivim2-x86_64-master.AppImage"
 ########
 # List port in use
 alias openports="sudo lsof -i -P -n | grep LISTEN"
+# get current timestamp
+alias ts="date +%s%N | cut -b1-13"
 
 ##########
 # NODE NPM

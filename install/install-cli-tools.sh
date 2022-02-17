@@ -37,3 +37,6 @@ cargo install git-delta
 # cocogitto - https://github.com/cocogitto/cocogitto
 echo '[*] Install cocogitto, the Conventional Commits toolbox'
 cargo install cocogitto
+# jless - https://pauljuliusmartinez.github.io/
+echo '[*] Install jless'
+cargo install jless
