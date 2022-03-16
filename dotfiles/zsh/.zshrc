@@ -126,3 +126,6 @@ fi
 if [ -f "$ZPUBLICDOTDIR/aliases" ] ; then
   source "$ZPUBLICDOTDIR/aliases"
 fi
+
+# Scaleway CLI autocomplete initialization.
+eval "$(scw autocomplete script shell=zsh)"

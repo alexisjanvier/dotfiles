@@ -61,6 +61,9 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/.ripgreprc"
 ######
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-
-
+########################
+# Fly.io https://fly.io/
+# ######################
+export FLYCTL_INSTALL="/home/alexisjanvier/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
 

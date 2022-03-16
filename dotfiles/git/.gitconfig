@@ -86,5 +86,5 @@
   keep-theirs = checkout --theirs --
 
   # Other
-  it = "!git init && git commit -m 'chore: the very first commit' --allow-empty"
+  it = "!git init && git commit -m 'chore: repository initialisation' --allow-empty"
   show-aliases = "!git config --get-regexp alias|sed \"s/alias.\\([a-zA-Z-]*\\) \\(\\.\\)*/$(tput setaf 2)\\1 $(tput setaf 8)\\2/\""
