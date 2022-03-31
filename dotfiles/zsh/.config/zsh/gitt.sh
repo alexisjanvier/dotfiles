@@ -2,14 +2,11 @@
 source "$ZPUBLICDOTDIR/git"
 bold=$(tput bold)
 normal=$(tput sgr0)
-if [ "$1" == "diff" ]
-then
-   batdiff
-elif [ "$1" == "top" ]
-then
+if [ "$1" == "diff" ]; then
+   GIT_EXTERNAL_DIFF=difft git diff
+elif [ "$1" == "top" ]; then
    gitui
-elif [ "$1" == "discover" ]
-then
+elif [ "$1" == "discover" ]; then
    echo -e "\n************************"
    echo "** Decouverte du repo **"
    echo "************************"
@@ -25,8 +22,7 @@ then
    echo -e "\n- Les modifications récentes -"
    echo -e "------------------------------\n"
    git repo-this-week
-elif [ "$1" == "daily" ]
-then
+elif [ "$1" == "daily" ]; then
    echo -e "\n***********"
    echo "** Daily **"
    echo "***********"
@@ -37,29 +33,24 @@ then
    echo -e "\n- Cette semaine -"
    echo -e "-----------------\n"
    git repo-this-week
-elif [ "$1" == "br" ]
-then
+elif [ "$1" == "br" ]; then
    _gcb
-elif [ "$1" == "delete" ]
-then
+elif [ "$1" == "delete" ]; then
    _gdb
-elif [ "$1" == "pr" ]
-then
+elif [ "$1" == "pr" ]; then
    _ggpr
-elif [ "$1" == "tags" ]
-then
+elif [ "$1" == "tags" ]; then
    _gt
-elif [ "$1" == "remotes" ]
-then
+elif [ "$1" == "remotes" ]; then
    _gt
-elif [ "$1" == "stash" ]
-then
+elif [ "$1" == "stash" ]; then
    _gs
 else
    echo -e "\n-------------------------------"
    echo "- ${bold}gitt : commandes git custo.${normal} -"
    echo -e "-------------------------------\n"
    echo " * ${bold}br${normal} : selectionner une branche avec fzf"
+   echo " * ${bold}diff${normal} : afficher le git diff avec Difftastic"
    echo " * ${bold}daily${normal} : des informations pour le daily"
    echo " * ${bold}delete${normal} : selectionner une branche à supprimer (force) avec fzf"
    echo " * ${bold}discover${normal} : découvrir le repo git"

@@ -40,3 +40,6 @@ cargo install cocogitto
 # jless - https://pauljuliusmartinez.github.io/
 echo '[*] Install jless'
 cargo install jless
+# Difftastic - https://difftastic.wilfred.me.uk/introduction.html
+echo '[*] Install Difftastic'
+cargo install difftastic
