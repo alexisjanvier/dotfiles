@@ -72,9 +72,9 @@
   repo-current-status = log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
   repo-top10 = "!f() { git shortlog --numbered --summary HEAD | head -10; }; f"
   repo-who-worked-on = shortlog -sn
-  repo-this-week = "!f() { git shortlog --after=\"1 week ago\" --before=\"today\" --pretty=format:\"%ar%n %h - %s %n\"; }; f"
+  repo-this-week = "!f() { git shortlog --since=\"7 day ago\" --pretty=format:\"%ar%n %h - %s %n\"; }; f"
   repo-yesterday = "!f() { git diff --shortstat --since=\"1 day ago\"; }; f"
-  repo-yesterday-commit = "!f() { git shortlog --since=\"1 day ago\" --pretty=format:\"%ar%n %h - %s %n\"; }; f"; f"
+  repo-yesterday-commit = "!f() { git shortlog --since=\"1 day ago\" --pretty=format:\"%ar%n %h - %s %n\"; }; f"
 
   # Maintenance
   delete-merged-branches-on-master = "!git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"

@@ -21,17 +21,17 @@ elif [ "$1" == "discover" ]; then
    tokei
    echo -e "\n- Les modifications récentes -"
    echo -e "------------------------------\n"
-   git repo-this-week
+   git repo-yesterday-commit
 elif [ "$1" == "daily" ]; then
    echo -e "\n***********"
    echo "** Daily **"
-   echo "***********"
-   echo -e "\n- Hier -"
-   echo -e "--------\n"
+   echo -e "***********\n"
    git repo-yesterday
    git repo-yesterday-commit
-   echo -e "\n- Cette semaine -"
-   echo -e "-----------------\n"
+elif [ "$1" == "weekly" ]; then
+   echo -e "\n*******************************"
+   echo "** Cette semaine sur le repo **"
+   echo -e "*******************************\n"
    git repo-this-week
 elif [ "$1" == "br" ]; then
    _gcb
@@ -52,6 +52,7 @@ else
    echo " * ${bold}br${normal} : selectionner une branche avec fzf"
    echo " * ${bold}diff${normal} : afficher le git diff avec Difftastic"
    echo " * ${bold}daily${normal} : des informations pour le daily"
+   echo " * ${bold}weekly${normal} : des informations sur les commits de la semaine"
    echo " * ${bold}delete${normal} : selectionner une branche à supprimer (force) avec fzf"
    echo " * ${bold}discover${normal} : découvrir le repo git"
    echo " * ${bold}pr${normal} : passer sur la branche d'une PR Github avec fzf"
