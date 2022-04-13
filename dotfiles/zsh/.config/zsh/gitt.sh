@@ -45,6 +45,9 @@ elif [ "$1" == "remotes" ]; then
    _gt
 elif [ "$1" == "stash" ]; then
    _gs
+elif [ "$1" == "github" ]; then
+   # https://github.com/dlvhdr/gh-dash
+   gh dash
 else
    echo -e "\n-------------------------------"
    echo "- ${bold}gitt : commandes git custo.${normal} -"
@@ -52,13 +55,14 @@ else
    echo " * ${bold}br${normal} : selectionner une branche avec fzf"
    echo " * ${bold}diff${normal} : afficher le git diff avec Difftastic"
    echo " * ${bold}daily${normal} : des informations pour le daily"
-   echo " * ${bold}weekly${normal} : des informations sur les commits de la semaine"
    echo " * ${bold}delete${normal} : selectionner une branche à supprimer (force) avec fzf"
    echo " * ${bold}discover${normal} : découvrir le repo git"
+   echo " * ${bold}github${normal} : des informations sur son activité Github global"
    echo " * ${bold}pr${normal} : passer sur la branche d'une PR Github avec fzf"
    echo " * ${bold}remotes${normal} : afficher les remotes avec fzf"
    echo " * ${bold}stash${normal} : afficher les patchs de stash avec fzf"
    echo " * ${bold}tags${normal} : afficher les tags avec fzf"
    echo " * ${bold}top${normal} : explorer le repo avec gitui"
+   echo " * ${bold}weekly${normal} : des informations sur les commits de la semaine"
    echo " "
 fi
