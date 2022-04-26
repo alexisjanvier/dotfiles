@@ -17,13 +17,12 @@ export ZPRIVATEDOTDIR="$HOME/.config-private/zsh"
 export HISTFILE="$HOME/.zhistory"
 export HISTSIZE=10000
 export SAVEHIST=10000
-export KEYTIMEOUT=1 #switch du mode vim
+export KEYTIMEOUT=1                                            #switch du mode vim
 export SPROMPT='Fix %R to %r ? [y:Yes, n:No, a:Abord, e:Edit]' #prompt pour l'auto-correction
 # Load private configuration (with token, environment variable, ...)
-if [ -f "$ZPRIVATEDOTDIR/env" ] ; then
+if [ -f "$ZPRIVATEDOTDIR/env" ]; then
   source "$ZPRIVATEDOTDIR/env"
 fi
-
 
 ############
 # oh-my-zsh
@@ -56,14 +55,8 @@ export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 #######################################
 export RIPGREP_CONFIG_PATH="$HOME/.config/.ripgreprc"
 
-######
-# YARN
-######
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
 ########################
 # Fly.io https://fly.io/
 # ######################
 export FLYCTL_INSTALL="/home/alexisjanvier/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
-

@@ -3,18 +3,18 @@
 ####################################################
 export ZSH=$HOME/.oh-my-zsh
 plugins=(
-    ansible
-    docker
-    docker-compose
-    fzf
-    npm
-    nvm
-    rust
-    safe-paste
-    vi-mode
-    zshmarks
-    zsh-completions
-    zsh-kitty
+  ansible
+  asdf
+  docker
+  docker-compose
+  fzf
+  npm
+  rust
+  safe-paste
+  vi-mode
+  zshmarks
+  zsh-completions
+  zsh-kitty
 )
 source $ZSH/oh-my-zsh.sh
 
@@ -34,11 +34,6 @@ zstyle ':completion:*:*:docker-*:*' option-stacking yes
 # read autocomplete function generated in ZPUBLICDOTDIR/external
 fpath=($ZPUBLICDOTDIR/external $fpath)
 
-############################
-# DIRENV https://direnv.net/
-############################
-eval "$(direnv hook zsh)"
-
 ########
 # Kitty
 ########
@@ -48,8 +43,8 @@ __kitty_complete
 ################################
 # StarShip https://starship.rs/
 ################################
-function set_win_title(){
-    echo -ne "\033]0; $(basename "$PWD") \007"
+function set_win_title() {
+  echo -ne "\033]0; $(basename "$PWD") \007"
 }
 precmd_functions+=(set_win_title)
 eval "$(starship init zsh)"
@@ -58,33 +53,6 @@ eval "$(starship init zsh)"
 # RUST
 ######
 source "$HOME/.cargo/env"
-
-####################################
-## NVM https://github.com/nvm-sh/nvm
-####################################
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# Auto switch nvm if .nvmrc is in folder
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
 
 ######################################
 ## FZF https://github.com/junegunn/fzf
@@ -108,14 +76,14 @@ _fzf_compgen_dir() {
 ########
 # DID
 ########
-if [ -f "$ZPUBLICDOTDIR/did" ] ; then
+if [ -f "$ZPUBLICDOTDIR/did" ]; then
   source "$ZPUBLICDOTDIR/did"
 fi
 
 ########
 # GIT
 ########
-if [ -f "$ZPUBLICDOTDIR/git" ] ; then
+if [ -f "$ZPUBLICDOTDIR/git" ]; then
   # source "$ZPUBLICDOTDIR/git"
   alias gitt='~/.config/zsh/gitt.sh'
 fi
@@ -123,9 +91,14 @@ fi
 ########
 # ALIAS
 ########
-if [ -f "$ZPUBLICDOTDIR/aliases" ] ; then
+if [ -f "$ZPUBLICDOTDIR/aliases" ]; then
   source "$ZPUBLICDOTDIR/aliases"
 fi
 
 # Scaleway CLI autocomplete initialization.
 eval "$(scw autocomplete script shell=zsh)"
+
+# ################
+# direnv with asdf
+# ################
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"

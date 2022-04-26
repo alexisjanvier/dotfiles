@@ -11,3 +11,5 @@ chmod +x *.sh
 ./install-rust.sh
 ./install-cli-tools.sh
 ./stow-all.sh
+source ~/.zshrc
+./install-asdf.sh

@@ -5,6 +5,8 @@ rm rf ~/.local/share/fonts/DankMono ~/.config/lsd ~/.config/kitty ~/.config/star
 
 echo '[*] Stowing/Creating simlinks for zsh'
 cd ../dotfiles && stow -vSt ~ zsh && cd ../install
+echo '[*] Stowing/Creating simlinks for asdf'
+cd ../dotfiles && stow -vSt ~ asdf && cd ../install
 echo '[*] Stowing/Creating simlinks for fonts'
 cd ../dotfiles && stow -vSt ~ fonts && cd ../install
 fc-cache -f -v
@@ -16,6 +18,5 @@ echo '[*] Stowing/Creating simlinks for lsd'
 cd ../dotfiles && stow -vSt ~ lsd && cd ../install
 echo '[*] Stowing/Creating simlinks for ripgrep'
 cd ../dotfiles && stow -vSt ~ ripgrep && cd ../install
-
 echo '[*] Stowing/Creating simlinks for git'
 cd ../dotfiles && stow -vSt ~ git && cd ../install

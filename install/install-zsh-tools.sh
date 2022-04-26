@@ -7,3 +7,5 @@ echo '[*] Install plugins oh-my-zsh zshmarks'
 git clone https://github.com/jocelynmallon/zshmarks.git ~/.oh-my-zsh/custom/plugins/zshmarks
 echo '[*] Install plugins oh-my-zsh zsh-completions'
 git clone https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/custom/plugins/zsh-completions
+echo '[*] Install asdf'
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.0
