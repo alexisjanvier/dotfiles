@@ -20,3 +20,5 @@ echo '[*] Stowing/Creating simlinks for ripgrep'
 cd ../dotfiles && stow -vSt ~ ripgrep && cd ../install
 echo '[*] Stowing/Creating simlinks for git'
 cd ../dotfiles && stow -vSt ~ git && cd ../install
+echo '[*] Stowing/Creating simlinks for abcde'
+cd ../dotfiles && stow -vSt ~ abcde && cd ../install

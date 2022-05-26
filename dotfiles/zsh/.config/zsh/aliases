@@ -60,6 +60,11 @@ alias openports="sudo lsof -i -P -n | grep LISTEN"
 # get current timestamp
 alias ts="date +%s%N | cut -b1-13"
 
+#######
+# ABCDE
+#######
+alias rippcd="abcde -B"
+
 ##########
 # NODE NPM
 ##########
@@ -81,3 +86,10 @@ alias l="showmarks"
 alias docker-manager="docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce"
 alias docker-manager-stop="docker stop portainer && docker rm portainer"
 alias docker-manager-update="docker pull portainer/portainer-ce"
+
+#############################################################
+# languagetool https://hub.docker.com/r/erikvl87/languagetool
+#############################################################
+alias languagetool-start="docker run --restart=on-failure:5 -d -p 8010:8010 --name=languagetool -e langtool_languageModel=/ngrams -v /home/alexisjanvier/.local/languagetool/ngrams:/ngrams erikvl87/languagetool"
+alias languagetool-stop="docker stop languagetool && docker rm languagetool"
+alias languagetool-update="docker pull erikvl87/languagetool"

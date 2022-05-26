@@ -1,3 +1,6 @@
 nodejs 18.0.0
 direnv 2.31.0
 neovim stable
+erlang 25.0
+elixir 1.13.4-otp-25
+postgres 14.2
