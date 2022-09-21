@@ -1,0 +1,245 @@
+#compdef zellij
+
+autoload -U is-at-least
+
+_zellij() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" \
+'--max-panes=[Maximum panes on screen, caution: opening more panes will close old ones]:MAX_PANES: ' \
+'--data-dir=[Change where zellij looks for layouts and plugins]:DATA_DIR: ' \
+'--server=[Run server listening at the specified socket path]:SERVER: ' \
+'-s+[Specify name of a new session]:SESSION: ' \
+'--session=[Specify name of a new session]:SESSION: ' \
+'-l+[Name of a predefined layout inside the layout directory or the path to a layout file]:LAYOUT: ' \
+'--layout=[Name of a predefined layout inside the layout directory or the path to a layout file]:LAYOUT: ' \
+'-c+[Change where zellij looks for the configuration file]:CONFIG: ' \
+'--config=[Change where zellij looks for the configuration file]:CONFIG: ' \
+'--config-dir=[Change where zellij looks for the configuration directory]:CONFIG_DIR: ' \
+'-h[Print help information]' \
+'--help[Print help information]' \
+'-V[Print version information]' \
+'--version[Print version information]' \
+'-d[]' \
+'--debug[]' \
+":: :_zellij_commands" \
+"*::: :->zellij" \
+&& ret=0
+    case $state in
+    (zellij)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:zellij-command-$line[1]:"
+        case $line[1] in
+            (options)
+_arguments "${_arguments_options[@]}" \
+'--simplified-ui=[Allow plugins to use a more simplified layout that is compatible with more fonts (true or false)]:SIMPLIFIED_UI: ' \
+'--theme=[Set the default theme]:THEME: ' \
+'--default-mode=[Set the default mode]:DEFAULT_MODE:((normal\:"In `Normal` mode, input is always written to the terminal, except for the shortcuts leading to other modes"
+locked\:"In `Locked` mode, input is always written to the terminal and all shortcuts are disabled except the one leading back to normal mode"
+resize\:"`Resize` mode allows resizing the different existing panes"
+pane\:"`Pane` mode allows creating and closing panes, as well as moving between them"
+tab\:"`Tab` mode allows creating and closing tabs, as well as moving between them"
+scroll\:"`Scroll` mode allows scrolling up and down within a pane"
+rename-tab\:"`RenameTab` mode allows assigning a new name to a tab"
+rename-pane\:"`RenamePane` mode allows assigning a new name to a pane"
+session\:"`Session` mode allows detaching sessions"
+move\:"`Move` mode allows moving the different existing panes within a tab"
+prompt\:"`Prompt` mode allows interacting with active prompts"
+tmux\:"`Tmux` mode allows for basic tmux keybindings functionality"))' \
+'--default-shell=[Set the default shell]:DEFAULT_SHELL: ' \
+'--layout-dir=[Set the layout_dir, defaults to subdirectory of config dir]:LAYOUT_DIR: ' \
+'--mouse-mode=[Set the handling of mouse events (true or false) Can be temporarily bypassed by the \[SHIFT\] key]:MOUSE_MODE: ' \
+'--pane-frames=[Set display of the pane frames (true or false)]:PANE_FRAMES: ' \
+'--mirror-session=[Mirror session when multiple users are connected (true or false)]:MIRROR_SESSION: ' \
+'--on-force-close=[Set behaviour on force close (quit or detach)]:ON_FORCE_CLOSE:(quit detach)' \
+'--scroll-buffer-size=[]:SCROLL_BUFFER_SIZE: ' \
+'--copy-command=[Switch to using a user supplied command for clipboard instead of OSC52]:COPY_COMMAND: ' \
+'(--copy-command)--copy-clipboard=[OSC52 destination clipboard]:COPY_CLIPBOARD:(system primary)' \
+'--copy-on-select=[Automatically copy when selecting text (true or false)]:COPY_ON_SELECT: ' \
+'--scrollback-editor=[Explicit full path to open the scrollback editor (default is $EDITOR or $VISUAL)]:SCROLLBACK_EDITOR: ' \
+'(--mouse-mode)--disable-mouse-mode[Disable handling of mouse events]' \
+'(--pane-frames)--no-pane-frames[Disable display of pane frames]' \
+'-h[Print help information]' \
+'--help[Print help information]' \
+&& ret=0
+;;
+(setup)
+_arguments "${_arguments_options[@]}" \
+'--dump-layout=[Dump the specified layout file to stdout]:DUMP_LAYOUT: ' \
+'--generate-completion=[Generates completion for the specified shell]:SHELL: ' \
+'--generate-auto-start=[Generates auto-start script for the specified shell]:SHELL: ' \
+'--dump-config[Dump the default configuration file to stdout]' \
+'--clean[Disables loading of configuration file at default location, loads the defaults that zellij ships with]' \
+'--check[Checks the configuration of zellij and displays currently used directories]' \
+'-h[Print help information]' \
+'--help[Print help information]' \
+&& ret=0
+;;
+(list-sessions)
+_arguments "${_arguments_options[@]}" \
+'-h[Print help information]' \
+'--help[Print help information]' \
+&& ret=0
+;;
+(attach)
+_arguments "${_arguments_options[@]}" \
+'--index=[Number of the session index in the active sessions ordered creation date]:INDEX: ' \
+'-c[Create a session if one does not exist]' \
+'--create[Create a session if one does not exist]' \
+'-h[Print help information]' \
+'--help[Print help information]' \
+'::session-name -- Name of the session to attach to:' \
+":: :_zellij__attach_commands" \
+"*::: :->attach" \
+&& ret=0
+
+    case $state in
+    (attach)
+        words=($line[2] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:zellij-attach-command-$line[2]:"
+        case $line[2] in
+            (options)
+_arguments "${_arguments_options[@]}" \
+'--simplified-ui=[Allow plugins to use a more simplified layout that is compatible with more fonts (true or false)]:SIMPLIFIED_UI: ' \
+'--theme=[Set the default theme]:THEME: ' \
+'--default-mode=[Set the default mode]:DEFAULT_MODE:((normal\:"In `Normal` mode, input is always written to the terminal, except for the shortcuts leading to other modes"
+locked\:"In `Locked` mode, input is always written to the terminal and all shortcuts are disabled except the one leading back to normal mode"
+resize\:"`Resize` mode allows resizing the different existing panes"
+pane\:"`Pane` mode allows creating and closing panes, as well as moving between them"
+tab\:"`Tab` mode allows creating and closing tabs, as well as moving between them"
+scroll\:"`Scroll` mode allows scrolling up and down within a pane"
+rename-tab\:"`RenameTab` mode allows assigning a new name to a tab"
+rename-pane\:"`RenamePane` mode allows assigning a new name to a pane"
+session\:"`Session` mode allows detaching sessions"
+move\:"`Move` mode allows moving the different existing panes within a tab"
+prompt\:"`Prompt` mode allows interacting with active prompts"
+tmux\:"`Tmux` mode allows for basic tmux keybindings functionality"))' \
+'--default-shell=[Set the default shell]:DEFAULT_SHELL: ' \
+'--layout-dir=[Set the layout_dir, defaults to subdirectory of config dir]:LAYOUT_DIR: ' \
+'--mouse-mode=[Set the handling of mouse events (true or false) Can be temporarily bypassed by the \[SHIFT\] key]:MOUSE_MODE: ' \
+'--pane-frames=[Set display of the pane frames (true or false)]:PANE_FRAMES: ' \
+'--mirror-session=[Mirror session when multiple users are connected (true or false)]:MIRROR_SESSION: ' \
+'--on-force-close=[Set behaviour on force close (quit or detach)]:ON_FORCE_CLOSE:(quit detach)' \
+'--scroll-buffer-size=[]:SCROLL_BUFFER_SIZE: ' \
+'--copy-command=[Switch to using a user supplied command for clipboard instead of OSC52]:COPY_COMMAND: ' \
+'(--copy-command)--copy-clipboard=[OSC52 destination clipboard]:COPY_CLIPBOARD:(system primary)' \
+'--copy-on-select=[Automatically copy when selecting text (true or false)]:COPY_ON_SELECT: ' \
+'--scrollback-editor=[Explicit full path to open the scrollback editor (default is $EDITOR or $VISUAL)]:SCROLLBACK_EDITOR: ' \
+'(--mouse-mode)--disable-mouse-mode[Disable handling of mouse events]' \
+'(--pane-frames)--no-pane-frames[Disable display of pane frames]' \
+'-h[Print help information]' \
+'--help[Print help information]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" \
+'*::subcommand -- The subcommand whose help message to display:' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(kill-session)
+_arguments "${_arguments_options[@]}" \
+'-h[Print help information]' \
+'--help[Print help information]' \
+'::target-session -- Name of target session:' \
+&& ret=0
+;;
+(kill-all-sessions)
+_arguments "${_arguments_options[@]}" \
+'-y[Automatic yes to prompts]' \
+'--yes[Automatic yes to prompts]' \
+'-h[Print help information]' \
+'--help[Print help information]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" \
+'*::subcommand -- The subcommand whose help message to display:' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_zellij_commands] )) ||
+_zellij_commands() {
+    local commands; commands=(
+'options:Change the behaviour of zellij' \
+'setup:Setup zellij and check its configuration' \
+'list-sessions:List active sessions' \
+'ls:List active sessions' \
+'attach:Attach to a session' \
+'a:Attach to a session' \
+'kill-session:Kill the specific session' \
+'k:Kill the specific session' \
+'kill-all-sessions:Kill all sessions' \
+'ka:Kill all sessions' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'zellij commands' commands "$@"
+}
+(( $+functions[_zellij__attach_commands] )) ||
+_zellij__attach_commands() {
+    local commands; commands=(
+'options:Change the behaviour of zellij' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'zellij attach commands' commands "$@"
+}
+(( $+functions[_zellij__attach__help_commands] )) ||
+_zellij__attach__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij attach help commands' commands "$@"
+}
+(( $+functions[_zellij__help_commands] )) ||
+_zellij__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij help commands' commands "$@"
+}
+(( $+functions[_zellij__kill-all-sessions_commands] )) ||
+_zellij__kill-all-sessions_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij kill-all-sessions commands' commands "$@"
+}
+(( $+functions[_zellij__kill-session_commands] )) ||
+_zellij__kill-session_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij kill-session commands' commands "$@"
+}
+(( $+functions[_zellij__list-sessions_commands] )) ||
+_zellij__list-sessions_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij list-sessions commands' commands "$@"
+}
+(( $+functions[_zellij__attach__options_commands] )) ||
+_zellij__attach__options_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij attach options commands' commands "$@"
+}
+(( $+functions[_zellij__options_commands] )) ||
+_zellij__options_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij options commands' commands "$@"
+}
+(( $+functions[_zellij__setup_commands] )) ||
+_zellij__setup_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij setup commands' commands "$@"
+}
+
+_zellij "$@"

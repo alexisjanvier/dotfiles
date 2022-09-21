@@ -94,6 +94,12 @@ fi
 if [ -f "$ZPUBLICDOTDIR/aliases" ]; then
   source "$ZPUBLICDOTDIR/aliases"
 fi
+###############
+# PRIVATE ALIAS
+###############
+if [ -f "$ZPRIVATEDOTDIR/aliases" ]; then
+  source "$ZPRIVATEDOTDIR/aliases"
+fi
 
 # Scaleway CLI autocomplete initialization.
 eval "$(scw autocomplete script shell=zsh)"
@@ -102,3 +108,8 @@ eval "$(scw autocomplete script shell=zsh)"
 # direnv with asdf
 # ################
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+
+# #####
+# GPG
+# #####
+export GPG_TTY=$(tty)
