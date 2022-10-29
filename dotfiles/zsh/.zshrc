@@ -113,3 +113,17 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 # GPG
 # #####
 export GPG_TTY=$(tty)
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# ############################################################
+# Krew https://krew.sigs.k8s.io/docs/user-guide/setup/install/
+# ############################################################
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# #####################################
+# Abra https://docs.coopcloud.tech/abra
+# #####################################
+PROG=abra
+_CLI_ZSH_AUTOCOMPLETE_HACK=1
+source "$HOME/.config/zsh/external/_abra"
