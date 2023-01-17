@@ -49,8 +49,7 @@ alias icat="kitty +kitten icat"
 # EDITEURS
 ##########
 alias vscode="/usr/bin/code"
-alias ovim="$HOME/.local/appimages/Onivim2-x86_64-master.AppImage"
-alias code="nvim"
+alias code="/usr/bin/codium"
 
 ########
 # DIVERS
